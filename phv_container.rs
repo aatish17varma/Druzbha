@@ -137,16 +137,16 @@ impl AddAssign for PhvContainer {
      // is in both containers, verify that the values corresponding
      // to that key are the same. If not, then exit.
      for (name, &value) in t_container.map.iter() {
-       if (self.map.contains_key (name)){
-         if (self[name] != t_container[name]) {
+       if self.map.contains_key (name){
+         if self[name] != t_container[name] {
            panic!("Values of containers for key {} do not match", name)
          }
        }
      }
      // Repeat for other container
      for (name, &value) in self.map.iter() {
-       if (t_container.map.contains_key (name)){
-         if (self[name] != t_container[name]) {
+       if t_container.map.contains_key (name){
+         if self[name] != t_container[name] {
            panic!("Values of containers for key {} do not match", name)
          }
        }
