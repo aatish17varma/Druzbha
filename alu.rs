@@ -13,10 +13,6 @@ struct ALU<'a>{
 }
 
 impl<'a> ALU<'a>{
-    //constructor with an intial value for is_stateful hard coded
-    // fn new(stateful: bool, passed_states: &mut phv_container::PhvContainer, pass_func: Box<fn(&mut phv_container::PhvContainer) -> &mut phv_container::PhvContainer>) -> Self{
-    //     ALU{states: &mut phv_container::PhvContainer::new(), sequential_function: pass_func, is_stateful: stateful}
-    // }
     //stateful constructor with vector of passed_states
     /*Think about using a phv instead of a vec<i32> of passed states */
     fn new_with_states_and_function(passed_states: &mut phv_container::PhvContainer, stateful: bool, func_to_execute: Box<fn(&mut phv_container::PhvContainer) -> &mut phv_container::PhvContainer>){
@@ -43,23 +39,11 @@ fn main(){
         
        return phv;
     }
-
-
-
     println!("Value of {state} is {value} ", state = "state1", value = phv.map["state1"]);
-    
     {
-
     let mut alu : ALU = ALU{states: phv, sequential_function: Box::new(seq), is_stateful: true};
-    
     alu.operator(); 
-
     }
-
     println!("Value of {state} is {value} ", state = "state1", value = phv.map["state1"]);
 
-    
-
-
-   
 }
